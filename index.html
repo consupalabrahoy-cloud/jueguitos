@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Capitales del Mundo</title>
+    <title>Juego de Geografía Mundial</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,6 +25,11 @@
         h1 {
             color: #333;
             margin-bottom: 20px;
+        }
+        .mode-selection button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 1.2em;
         }
         .question {
             font-size: 1.5em;
@@ -81,56 +86,76 @@
             background-color: #333;
             color: white;
         }
+        .learning-info {
+            margin-top: 15px;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            text-align: left;
+        }
+        .learning-info strong {
+            color: #555;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Adivina la Capital</h1>
+    <h1>Juego de Geografía Mundial</h1>
     
     <div id="loading" style="display: none;">Cargando datos de países...</div>
 
+    <div id="mode-select" class="mode-selection">
+        <h2>Selecciona un Modo de Juego</h2>
+        <button onclick="iniciarJuego('capital')">Adivina la Capital</button>
+        <button onclick="iniciarJuego('continente')">Adivina el Continente</button>
+    </div>
+
     <div id="game-area" style="display: none;">
-        <p class="question" id="country-question">¿Cuál es la capital de [País]?</p>
+        <p class="question" id="country-question">Pregunta</p>
         <div class="options-grid" id="options-container">
             </div>
-        <p id="feedback"></p>
+        
+        <div id="feedback"></div>
+        <div id="learning-info" class="learning-info" style="display: none;"></div>
+
         <button id="next-button" onclick="nextQuestion()" style="display: none;">Siguiente Pregunta</button>
-        <div id="score">Ronda: <span id="current-question-num">1</span> de 10 | Puntuación: <span id="current-score">0</span></div>
+        <div id="score">Ronda: <span id="current-question-num">0</span> de 10 | Puntuación: <span id="current-score">0</span></div>
     </div>
     
     <div id="game-over" style="display: none;">
         <h2>¡Juego Terminado!</h2>
         <p>Tu puntuación final es: <span id="final-score"></span> / 10</p>
-        <button id="restart-button" onclick="iniciarJuego()">Volver a Jugar</button>
+        <button id="restart-button" onclick="resetJuego()">Volver al Menú Principal</button>
     </div>
 </div>
 
 <script>
     const MAX_ROUNDS = 10;
+    const CONTINENTES = ["África", "América del Norte", "América del Sur", "Asia", "Europa", "Oceanía"];
     
     let todosLosPaises = [];
-    let paisesDisponibles = []; // Lista de países que aún no se han preguntado
+    let paisesDisponibles = []; 
     let preguntaActual = {};
+    let modoActual = 'capital'; // 'capital' o 'continente'
     let puntuacion = 0;
     let rondaActual = 0;
 
     // --- Carga de Datos desde JSON ---
     async function cargarDatos() {
         document.getElementById('loading').style.display = 'block';
+        document.getElementById('mode-select').style.display = 'none';
+
         try {
             const response = await fetch('paises.json');
-            if (!response.ok) {
-                throw new Error(`Error al cargar los datos: ${response.statusText}`);
-            }
+            if (!response.ok) throw new Error(`Error al cargar los datos: ${response.statusText}`);
+            
             const data = await response.json();
             
-            // Filtra solo países válidos (con nombre y capital)
-            todosLosPaises = data.filter(p => p.Capital && p.País);
+            // Filtra países con datos esenciales
+            todosLosPaises = data.filter(p => p.Capital && p.País && p["Idioma Oficial"] && p.Continente);
             
             document.getElementById('loading').style.display = 'none';
-            document.getElementById('game-area').style.display = 'block';
-            iniciarJuego();
+            document.getElementById('mode-select').style.display = 'block';
 
         } catch (error) {
             document.getElementById('loading').innerHTML = `Error: No se pudo cargar el archivo paises.json. Asegúrate de que esté en la misma carpeta. (${error.message})`;
@@ -138,64 +163,102 @@
         }
     }
 
-    // --- Lógica del Juego ---
-    function iniciarJuego() {
+    // --- Control de Flujo del Juego ---
+    function resetJuego() {
+        // Vuelve a la pantalla de selección de modo
+        document.getElementById('game-over').style.display = 'none';
+        document.getElementById('game-area').style.display = 'none';
+        document.getElementById('mode-select').style.display = 'block';
+    }
+
+    function iniciarJuego(modo) {
+        modoActual = modo;
+        
         // Reiniciar variables
         puntuacion = 0;
         rondaActual = 0;
-
-        // **Novedad:** Reiniciar la lista de países disponibles
-        // Si hay menos países que rondas, simplemente usamos todos los países.
         paisesDisponibles = [...todosLosPaises]; 
         
-        // Mostrar áreas de juego y ocultar fin de juego
+        // Mostrar área de juego y ocultar menú/fin de juego
+        document.getElementById('mode-select').style.display = 'none';
         document.getElementById('game-over').style.display = 'none';
         document.getElementById('game-area').style.display = 'block';
+        
+        // Ocultar info de aprendizaje al inicio
+        document.getElementById('learning-info').style.display = 'none';
         
         actualizarPuntuacion();
         nextQuestion();
     }
     
+    function terminarJuego() {
+        document.getElementById('game-area').style.display = 'none';
+        document.getElementById('final-score').textContent = puntuacion;
+        document.getElementById('game-over').style.display = 'block';
+    }
+
+
+    // --- Lógica de Preguntas ---
+
     function seleccionarPregunta() {
-        // Mínimo de países para generar 4 opciones
         if (paisesDisponibles.length === 0) {
-             // Si se acaban los países, rellenamos de nuevo para que el juego continúe
+             // Si se acaban los países, rellenamos de nuevo (Ciclo)
              paisesDisponibles = [...todosLosPaises];
         }
         
-        if (todosLosPaises.length < 4) {
-            document.getElementById('country-question').textContent = "Se necesitan al menos 4 países para jugar.";
-            return;
-        }
-
         // 1. Elegir el país correcto de la lista de DISPONIBLES
         const indiceAleatorio = Math.floor(Math.random() * paisesDisponibles.length);
         const paisCorrecto = paisesDisponibles[indiceAleatorio];
 
-        // **Novedad:** Eliminar el país de la lista de disponibles para evitar repetición
+        // Eliminar el país de la lista de disponibles para evitar repetición
         paisesDisponibles.splice(indiceAleatorio, 1);
         
-        const capitalCorrecta = paisCorrecto.Capital;
-
-        // 2. Elegir 3 capitales incorrectas de la lista COMPLETA (incluyendo el país elegido)
-        let opcionesIncorrectas = [];
-        let todasLasCapitales = todosLosPaises.map(p => p.Capital);
-        
-        // Filtrar la capital correcta y luego barajar y tomar 3
-        let capitalesParaOpciones = todasLasCapitales.filter(c => c !== capitalCorrecta);
-        capitalesParaOpciones.sort(() => 0.5 - Math.random());
-        opcionesIncorrectas = capitalesParaOpciones.slice(0, 3);
-
-        // 3. Combinar y barajar las 4 opciones
-        let opciones = [...opcionesIncorrectas, capitalCorrecta];
-        opciones.sort(() => 0.5 - Math.random()); 
-
         preguntaActual = {
             pais: paisCorrecto.País,
-            capital: capitalCorrecta,
-            opciones: opciones
+            capital: paisCorrecto.Capital,
+            continente: paisCorrecto.Continente,
+            idioma: paisCorrecto["Idioma Oficial"],
+            opciones: []
         };
+        
+        if (modoActual === 'capital') {
+            preguntaActual.preguntaTexto = `¿Cuál es la capital de ${paisCorrecto.País}?`;
+            preguntaActual.respuestaCorrecta = paisCorrecto.Capital;
+            preguntaActual.opciones = generarOpcionesCapital(paisCorrecto.Capital);
+        } else { // modo 'continente'
+            preguntaActual.preguntaTexto = `¿A qué continente pertenece ${paisCorrecto.País}?`;
+            preguntaActual.respuestaCorrecta = paisCorrecto.Continente;
+            preguntaActual.opciones = generarOpcionesContinente(paisCorrecto.Continente);
+        }
     }
+
+    function generarOpcionesCapital(capitalCorrecta) {
+        let todasLasCapitales = todosLosPaises.map(p => p.Capital);
+        let capitalesParaOpciones = todasLasCapitales.filter(c => c !== capitalCorrecta);
+        
+        // Barajar y tomar 3 incorrectas
+        capitalesParaOpciones.sort(() => 0.5 - Math.random());
+        let opcionesIncorrectas = capitalesParaOpciones.slice(0, 3);
+
+        // Combinar, barajar y devolver
+        let opciones = [...opcionesIncorrectas, capitalCorrecta];
+        opciones.sort(() => 0.5 - Math.random()); 
+        return opciones;
+    }
+    
+    function generarOpcionesContinente(continenteCorrecto) {
+        let opcionesIncorrectas = CONTINENTES.filter(c => c !== continenteCorrecto);
+        
+        // Barajar y tomar 3 incorrectas (o menos si CONTINENTES tiene menos de 4)
+        opcionesIncorrectas.sort(() => 0.5 - Math.random());
+        opcionesIncorrectas = opcionesIncorrectas.slice(0, 3);
+
+        // Combinar, barajar y devolver
+        let opciones = [...opcionesIncorrectas, continenteCorrecto];
+        opciones.sort(() => 0.5 - Math.random()); 
+        return opciones;
+    }
+
 
     function mostrarPregunta() {
         if (rondaActual >= MAX_ROUNDS) {
@@ -207,17 +270,18 @@
         
         seleccionarPregunta();
         
-        document.getElementById('country-question').textContent = `¿Cuál es la capital de ${preguntaActual.pais}?`;
+        document.getElementById('country-question').textContent = preguntaActual.preguntaTexto;
         document.getElementById('feedback').textContent = '';
+        document.getElementById('learning-info').style.display = 'none';
         document.getElementById('next-button').style.display = 'none';
         
         const container = document.getElementById('options-container');
-        container.innerHTML = ''; 
+        container.innerHTML = ''; // Limpiar opciones anteriores
 
-        preguntaActual.opciones.forEach(capital => {
+        preguntaActual.opciones.forEach(opcion => {
             const button = document.createElement('button');
-            button.textContent = capital;
-            button.onclick = () => verificarRespuesta(capital, button);
+            button.textContent = opcion;
+            button.onclick = () => verificarRespuesta(opcion, button);
             container.appendChild(button);
         });
 
@@ -232,32 +296,42 @@
         
         let mensaje = "";
 
-        if (seleccionada === preguntaActual.capital) {
+        if (seleccionada === preguntaActual.respuestaCorrecta) {
             puntuacion++;
             boton.classList.add('correct');
-            mensaje = "¡Correcto! 🎉";
+            mensaje = "¡Respuesta Correcta! 🎉";
         } else {
             boton.classList.add('incorrect');
-            mensaje = `Incorrecto. La capital es ${preguntaActual.capital}.`;
+            mensaje = "Respuesta Incorrecta. 😔";
             
             // Marcar la respuesta correcta
             todosLosBotones.forEach(btn => {
-                if (btn.textContent === preguntaActual.capital) {
+                if (btn.textContent === preguntaActual.respuestaCorrecta) {
                     btn.classList.add('correct');
                 }
             });
         }
 
         document.getElementById('feedback').textContent = mensaje;
+        mostrarInfoAprendizaje();
 
-        if (rondaActual < MAX_ROUNDS) {
-            document.getElementById('next-button').style.display = 'block';
-        } else {
-             document.getElementById('next-button').textContent = "Ver Resultados";
-             document.getElementById('next-button').style.display = 'block';
-        }
+        // Mostrar el botón Siguiente
+        document.getElementById('next-button').textContent = (rondaActual < MAX_ROUNDS) ? "Siguiente Pregunta" : "Ver Resultados";
+        document.getElementById('next-button').style.display = 'block';
         
         actualizarPuntuacion();
+    }
+    
+    // --- Novedad: Mostrar el Idioma Oficial y más ---
+    function mostrarInfoAprendizaje() {
+        const infoDiv = document.getElementById('learning-info');
+        infoDiv.innerHTML = `
+            <strong>País:</strong> ${preguntaActual.pais} <br>
+            <strong>Capital:</strong> ${preguntaActual.capital} <br>
+            <strong>Continente:</strong> ${preguntaActual.continente} <br>
+            <strong>Idioma Oficial:</strong> ${preguntaActual.idioma}
+        `;
+        infoDiv.style.display = 'block';
     }
 
     function nextQuestion() {
@@ -267,12 +341,6 @@
             btn.disabled = false;
         });
         mostrarPregunta();
-    }
-
-    function terminarJuego() {
-        document.getElementById('game-area').style.display = 'none';
-        document.getElementById('final-score').textContent = puntuacion;
-        document.getElementById('game-over').style.display = 'block';
     }
 
     function actualizarPuntuacion() {
