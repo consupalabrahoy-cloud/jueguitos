@@ -5,95 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de Geografía Mundial</title>
     <style>
+        /* Paleta de colores: Primario (Azul Marino), Secundario (Cian/Claro) */
+        :root {
+            --color-primary: #1e3a8a; /* Azul Marino */
+            --color-secondary: #06b6d4; /* Cian Brillante */
+            --color-success: #10b981; /* Verde esmeralda */
+            --color-error: #ef4444; /* Rojo */
+            --color-background: #f1f5f9; /* Gris Claro */
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            background-color: #f4f4f9;
+            background-color: var(--color-background);
+            color: #333;
         }
         .container {
             background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 600px;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            max-width: 650px;
             text-align: center;
         }
         h1 {
-            color: #333;
-            margin-bottom: 20px;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+            font-weight: 700;
         }
+        h2 {
+            color: var(--color-primary);
+        }
+        /* -- Sección de Selección de Modo y Juego Terminado -- */
         .mode-selection button {
             margin: 10px;
             padding: 15px 30px;
-            font-size: 1.2em;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
         }
+        .mode-selection button:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* -- Área de Juego -- */
         .question {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #007bff;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            color: var(--color-primary);
+            font-weight: 600;
         }
         .options-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 20px;
         }
         button {
-            padding: 10px;
+            padding: 12px;
             font-size: 1em;
             cursor: pointer;
-            border: 2px solid #007bff;
-            border-radius: 5px;
+            border: 2px solid var(--color-secondary);
+            border-radius: 8px;
             background-color: #fff;
-            color: #007bff;
-            transition: background-color 0.3s, color 0.3s, transform 0.1s;
+            color: var(--color-primary);
+            font-weight: 500;
+            transition: all 0.2s;
         }
         button:hover:not(:disabled) {
-            background-color: #007bff;
-            color: #fff;
+            background-color: var(--color-secondary);
+            color: white;
+            border-color: var(--color-secondary);
         }
-        button:active:not(:disabled) {
-            transform: scale(0.98);
-        }
-        button:disabled {
-            cursor: default;
-        }
+        
+        /* -- Feedback y Puntuación -- */
         .correct {
-            background-color: #28a745 !important;
+            background-color: var(--color-success) !important;
             color: white !important;
-            border-color: #28a745 !important;
+            border-color: var(--color-success) !important;
         }
         .incorrect {
-            background-color: #dc3545 !important;
+            background-color: var(--color-error) !important;
             color: white !important;
-            border-color: #dc3545 !important;
+            border-color: var(--color-error) !important;
         }
         #score {
-            margin-top: 20px;
-            font-weight: bold;
+            margin-top: 25px;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: var(--color-primary);
         }
-        #restart-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border-color: #333;
-            color: #333;
-        }
-        #restart-button:hover {
-            background-color: #333;
+        #next-button {
+            background-color: var(--color-primary);
             color: white;
-        }
-        .learning-info {
+            border: 2px solid var(--color-primary);
             margin-top: 15px;
-            padding: 10px;
-            border-top: 1px solid #ddd;
+        }
+
+        /* -- Información de Aprendizaje -- */
+        .learning-info {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--color-background);
             text-align: left;
+            font-size: 0.95em;
+            line-height: 1.6;
         }
         .learning-info strong {
-            color: #555;
+            color: var(--color-primary);
+        }
+        
+        /* -- Barra de Progreso/Tiempo -- */
+        #timer-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: none; /* Oculto por defecto */
+        }
+        #timer-bar {
+            height: 100%;
+            width: 100%;
+            background-color: var(--color-secondary);
+            transition: width 0s linear;
         }
     </style>
 </head>
@@ -106,11 +149,18 @@
 
     <div id="mode-select" class="mode-selection">
         <h2>Selecciona un Modo de Juego</h2>
-        <button onclick="iniciarJuego('capital')">Adivina la Capital</button>
-        <button onclick="iniciarJuego('continente')">Adivina el Continente</button>
+        <button onclick="iniciarJuego('capital', false)">Adivina la Capital (Normal)</button>
+        <button onclick="iniciarJuego('continente', false)">Adivina el Continente (Normal)</button>
+        
+        <br><br>
+        <h2>Modo Desafío (Rondas Rápidas - 15s)</h2>
+        <button onclick="iniciarJuego('capital', true)">Capital (Desafío)</button>
+        <button onclick="iniciarJuego('continente', true)">Continente (Desafío)</button>
     </div>
 
     <div id="game-area" style="display: none;">
+        <div id="timer-bar-container"><div id="timer-bar"></div></div>
+
         <p class="question" id="country-question">Pregunta</p>
         <div class="options-grid" id="options-container">
             </div>
@@ -131,17 +181,21 @@
 
 <script>
     const MAX_ROUNDS = 10;
+    const TIME_LIMIT_SECONDS = 15; // Límite de tiempo para el modo desafío
     const CONTINENTES = ["África", "América del Norte", "América del Sur", "Asia", "Europa", "Oceanía"];
     
     let todosLosPaises = [];
     let paisesDisponibles = []; 
     let preguntaActual = {};
-    let modoActual = 'capital'; // 'capital' o 'continente'
+    let modoActual = 'capital'; 
+    let modoDesafio = false; // Nuevo: Controla si estamos en modo desafío
     let puntuacion = 0;
     let rondaActual = 0;
+    let timerInterval; // Para controlar el temporizador
 
-    // --- Carga de Datos desde JSON ---
+    // --- Carga de Datos y Configuración ---
     async function cargarDatos() {
+        // ... (La función cargarDatos se mantiene igual)
         document.getElementById('loading').style.display = 'block';
         document.getElementById('mode-select').style.display = 'none';
 
@@ -150,8 +204,6 @@
             if (!response.ok) throw new Error(`Error al cargar los datos: ${response.statusText}`);
             
             const data = await response.json();
-            
-            // Filtra países con datos esenciales
             todosLosPaises = data.filter(p => p.Capital && p.País && p["Idioma Oficial"] && p.Continente);
             
             document.getElementById('loading').style.display = 'none';
@@ -162,55 +214,47 @@
             console.error(error);
         }
     }
-
-    // --- Control de Flujo del Juego ---
+    
     function resetJuego() {
-        // Vuelve a la pantalla de selección de modo
+        clearInterval(timerInterval); // Asegurar que no haya temporizadores activos
         document.getElementById('game-over').style.display = 'none';
         document.getElementById('game-area').style.display = 'none';
         document.getElementById('mode-select').style.display = 'block';
+        // Ocultar la barra de tiempo
+        document.getElementById('timer-bar-container').style.display = 'none';
     }
 
-    function iniciarJuego(modo) {
+    // Novedad: Recibe el modo desafío como parámetro
+    function iniciarJuego(modo, esDesafio) {
         modoActual = modo;
+        modoDesafio = esDesafio;
         
-        // Reiniciar variables
+        // Configurar la barra de tiempo
+        document.getElementById('timer-bar-container').style.display = modoDesafio ? 'block' : 'none';
+        
+        // ... (El resto de iniciarJuego se mantiene igual)
         puntuacion = 0;
         rondaActual = 0;
         paisesDisponibles = [...todosLosPaises]; 
         
-        // Mostrar área de juego y ocultar menú/fin de juego
         document.getElementById('mode-select').style.display = 'none';
         document.getElementById('game-over').style.display = 'none';
         document.getElementById('game-area').style.display = 'block';
-        
-        // Ocultar info de aprendizaje al inicio
         document.getElementById('learning-info').style.display = 'none';
         
         actualizarPuntuacion();
         nextQuestion();
     }
     
-    function terminarJuego() {
-        document.getElementById('game-area').style.display = 'none';
-        document.getElementById('final-score').textContent = puntuacion;
-        document.getElementById('game-over').style.display = 'block';
-    }
-
-
-    // --- Lógica de Preguntas ---
-
+    // --- Lógica de Preguntas (Se mantiene igual) ---
     function seleccionarPregunta() {
+        // ... (Lógica de selección de país y opciones se mantiene igual)
         if (paisesDisponibles.length === 0) {
-             // Si se acaban los países, rellenamos de nuevo (Ciclo)
              paisesDisponibles = [...todosLosPaises];
         }
         
-        // 1. Elegir el país correcto de la lista de DISPONIBLES
         const indiceAleatorio = Math.floor(Math.random() * paisesDisponibles.length);
         const paisCorrecto = paisesDisponibles[indiceAleatorio];
-
-        // Eliminar el país de la lista de disponibles para evitar repetición
         paisesDisponibles.splice(indiceAleatorio, 1);
         
         preguntaActual = {
@@ -225,40 +269,31 @@
             preguntaActual.preguntaTexto = `¿Cuál es la capital de ${paisCorrecto.País}?`;
             preguntaActual.respuestaCorrecta = paisCorrecto.Capital;
             preguntaActual.opciones = generarOpcionesCapital(paisCorrecto.Capital);
-        } else { // modo 'continente'
+        } else { 
             preguntaActual.preguntaTexto = `¿A qué continente pertenece ${paisCorrecto.País}?`;
             preguntaActual.respuestaCorrecta = paisCorrecto.Continente;
             preguntaActual.opciones = generarOpcionesContinente(paisCorrecto.Continente);
         }
     }
 
-    function generarOpcionesCapital(capitalCorrecta) {
+    function generarOpcionesCapital(capitalCorrecta) { /* ... (se mantiene igual) */
         let todasLasCapitales = todosLosPaises.map(p => p.Capital);
         let capitalesParaOpciones = todasLasCapitales.filter(c => c !== capitalCorrecta);
-        
-        // Barajar y tomar 3 incorrectas
         capitalesParaOpciones.sort(() => 0.5 - Math.random());
         let opcionesIncorrectas = capitalesParaOpciones.slice(0, 3);
-
-        // Combinar, barajar y devolver
         let opciones = [...opcionesIncorrectas, capitalCorrecta];
         opciones.sort(() => 0.5 - Math.random()); 
         return opciones;
     }
     
-    function generarOpcionesContinente(continenteCorrecto) {
+    function generarOpcionesContinente(continenteCorrecto) { /* ... (se mantiene igual) */
         let opcionesIncorrectas = CONTINENTES.filter(c => c !== continenteCorrecto);
-        
-        // Barajar y tomar 3 incorrectas (o menos si CONTINENTES tiene menos de 4)
         opcionesIncorrectas.sort(() => 0.5 - Math.random());
         opcionesIncorrectas = opcionesIncorrectas.slice(0, 3);
-
-        // Combinar, barajar y devolver
         let opciones = [...opcionesIncorrectas, continenteCorrecto];
         opciones.sort(() => 0.5 - Math.random()); 
         return opciones;
     }
-
 
     function mostrarPregunta() {
         if (rondaActual >= MAX_ROUNDS) {
@@ -276,7 +311,7 @@
         document.getElementById('next-button').style.display = 'none';
         
         const container = document.getElementById('options-container');
-        container.innerHTML = ''; // Limpiar opciones anteriores
+        container.innerHTML = ''; 
 
         preguntaActual.opciones.forEach(opcion => {
             const button = document.createElement('button');
@@ -286,33 +321,75 @@
         });
 
         actualizarPuntuacion();
+        
+        // Novedad: Iniciar temporizador si es modo desafío
+        if (modoDesafio) {
+            iniciarTemporizador();
+        }
     }
 
+    // --- Novedad: Control del Temporizador ---
+    function iniciarTemporizador() {
+        clearInterval(timerInterval);
+        
+        const bar = document.getElementById('timer-bar');
+        bar.style.width = '100%';
+        bar.style.backgroundColor = 'var(--color-secondary)';
+        
+        let tiempoRestante = TIME_LIMIT_SECONDS;
+        const totalTime = TIME_LIMIT_SECONDS;
+
+        timerInterval = setInterval(() => {
+            tiempoRestante -= 0.1;
+            
+            if (tiempoRestante <= 0) {
+                clearInterval(timerInterval);
+                verificarRespuesta("Tiempo Agotado", null); // Llamar a la verificación sin selección
+            } else {
+                const porcentaje = (tiempoRestante / totalTime) * 100;
+                bar.style.width = `${porcentaje}%`;
+
+                // Cambio de color visual en los últimos 5 segundos
+                if (tiempoRestante <= 5) {
+                    bar.style.backgroundColor = 'var(--color-error)';
+                }
+            }
+        }, 100);
+    }
+
+
     function verificarRespuesta(seleccionada, boton) {
+        clearInterval(timerInterval); // Detener el temporizador inmediatamente
+        
         const todosLosBotones = document.querySelectorAll('#options-container button');
 
         // Desactivar todos los botones después de la selección
         todosLosBotones.forEach(btn => btn.disabled = true);
         
         let mensaje = "";
+        let esCorrecta = (seleccionada === preguntaActual.respuestaCorrecta);
 
-        if (seleccionada === preguntaActual.respuestaCorrecta) {
+        if (boton === null) { // Caso de tiempo agotado
+            mensaje = "¡Se acabó el tiempo! ⏳ Respuesta Incorrecta.";
+            esCorrecta = false;
+        } else if (esCorrecta) {
             puntuacion++;
             boton.classList.add('correct');
             mensaje = "¡Respuesta Correcta! 🎉";
         } else {
             boton.classList.add('incorrect');
             mensaje = "Respuesta Incorrecta. 😔";
-            
-            // Marcar la respuesta correcta
-            todosLosBotones.forEach(btn => {
-                if (btn.textContent === preguntaActual.respuestaCorrecta) {
-                    btn.classList.add('correct');
-                }
-            });
         }
 
         document.getElementById('feedback').textContent = mensaje;
+        
+        // Marcar la respuesta correcta (para ambos modos y tiempo agotado)
+        todosLosBotones.forEach(btn => {
+            if (btn.textContent === preguntaActual.respuestaCorrecta) {
+                btn.classList.add('correct');
+            }
+        });
+
         mostrarInfoAprendizaje();
 
         // Mostrar el botón Siguiente
@@ -322,8 +399,7 @@
         actualizarPuntuacion();
     }
     
-    // --- Novedad: Mostrar el Idioma Oficial y más ---
-    function mostrarInfoAprendizaje() {
+    function mostrarInfoAprendizaje() { /* ... (se mantiene igual) */
         const infoDiv = document.getElementById('learning-info');
         infoDiv.innerHTML = `
             <strong>País:</strong> ${preguntaActual.pais} <br>
@@ -341,6 +417,13 @@
             btn.disabled = false;
         });
         mostrarPregunta();
+    }
+
+    function terminarJuego() {
+        clearInterval(timerInterval);
+        document.getElementById('game-area').style.display = 'none';
+        document.getElementById('final-score').textContent = puntuacion;
+        document.getElementById('game-over').style.display = 'block';
     }
 
     function actualizarPuntuacion() {
