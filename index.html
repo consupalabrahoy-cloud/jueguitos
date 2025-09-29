@@ -153,7 +153,7 @@
         <button onclick="iniciarJuego('continente', false)">Adivina el Continente (Normal)</button>
         
         <br><br>
-        <h2>Modo Desafío (Rondas Rápidas - 15s)</h2>
+        <h2>Modo Desafío (Rondas Rápidas - 7seg)</h2>
         <button onclick="iniciarJuego('capital', true)">Capital (Desafío)</button>
         <button onclick="iniciarJuego('continente', true)">Continente (Desafío)</button>
     </div>
@@ -181,7 +181,7 @@
 
 <script>
     const MAX_ROUNDS = 10;
-    const TIME_LIMIT_SECONDS = 6; // Límite de tiempo para el modo desafío
+    const TIME_LIMIT_SECONDS = 7; // Límite de tiempo para el modo desafío
     const CONTINENTES = ["África", "América del Norte", "América del Sur", "Asia", "Europa", "Oceanía"];
     
     let todosLosPaises = [];
@@ -437,4 +437,5 @@
 </script>
 </body>
 </html>
+
 
