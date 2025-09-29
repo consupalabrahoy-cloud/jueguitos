@@ -54,6 +54,9 @@
         button:active:not(:disabled) {
             transform: scale(0.98);
         }
+        button:disabled {
+            cursor: default;
+        }
         .correct {
             background-color: #28a745 !important;
             color: white !important;
@@ -67,6 +70,16 @@
         #score {
             margin-top: 20px;
             font-weight: bold;
+        }
+        #restart-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-color: #333;
+            color: #333;
+        }
+        #restart-button:hover {
+            background-color: #333;
+            color: white;
         }
     </style>
 </head>
@@ -83,28 +96,36 @@
             </div>
         <p id="feedback"></p>
         <button id="next-button" onclick="nextQuestion()" style="display: none;">Siguiente Pregunta</button>
-        <div id="score">Puntuación: <span id="current-score">0</span> / <span id="total-questions">0</span></div>
+        <div id="score">Ronda: <span id="current-question-num">1</span> de 10 | Puntuación: <span id="current-score">0</span></div>
+    </div>
+    
+    <div id="game-over" style="display: none;">
+        <h2>¡Juego Terminado!</h2>
+        <p>Tu puntuación final es: <span id="final-score"></span> / 10</p>
+        <button id="restart-button" onclick="iniciarJuego()">Volver a Jugar</button>
     </div>
 </div>
 
 <script>
+    const MAX_ROUNDS = 10;
+    
     let todosLosPaises = [];
+    let paisesDisponibles = []; // Lista de países que aún no se han preguntado
     let preguntaActual = {};
     let puntuacion = 0;
-    let totalPreguntas = 0;
+    let rondaActual = 0;
 
     // --- Carga de Datos desde JSON ---
     async function cargarDatos() {
         document.getElementById('loading').style.display = 'block';
         try {
-            // Asume que el archivo paises.json está en la misma ubicación
             const response = await fetch('paises.json');
             if (!response.ok) {
                 throw new Error(`Error al cargar los datos: ${response.statusText}`);
             }
             const data = await response.json();
             
-            // Filtrar países con capitales o nombres en blanco por seguridad
+            // Filtra solo países válidos (con nombre y capital)
             todosLosPaises = data.filter(p => p.Capital && p.País);
             
             document.getElementById('loading').style.display = 'none';
@@ -119,35 +140,55 @@
 
     // --- Lógica del Juego ---
     function iniciarJuego() {
+        // Reiniciar variables
         puntuacion = 0;
-        totalPreguntas = 0;
+        rondaActual = 0;
+
+        // **Novedad:** Reiniciar la lista de países disponibles
+        // Si hay menos países que rondas, simplemente usamos todos los países.
+        paisesDisponibles = [...todosLosPaises]; 
+        
+        // Mostrar áreas de juego y ocultar fin de juego
+        document.getElementById('game-over').style.display = 'none';
+        document.getElementById('game-area').style.display = 'block';
+        
         actualizarPuntuacion();
         nextQuestion();
     }
-
+    
     function seleccionarPregunta() {
-        // Asegúrate de tener suficientes países
+        // Mínimo de países para generar 4 opciones
+        if (paisesDisponibles.length === 0) {
+             // Si se acaban los países, rellenamos de nuevo para que el juego continúe
+             paisesDisponibles = [...todosLosPaises];
+        }
+        
         if (todosLosPaises.length < 4) {
             document.getElementById('country-question').textContent = "Se necesitan al menos 4 países para jugar.";
             return;
         }
 
-        // 1. Elegir el país correcto al azar
-        const indiceCorrecto = Math.floor(Math.random() * todosLosPaises.length);
-        const paisCorrecto = todosLosPaises[indiceCorrecto];
+        // 1. Elegir el país correcto de la lista de DISPONIBLES
+        const indiceAleatorio = Math.floor(Math.random() * paisesDisponibles.length);
+        const paisCorrecto = paisesDisponibles[indiceAleatorio];
+
+        // **Novedad:** Eliminar el país de la lista de disponibles para evitar repetición
+        paisesDisponibles.splice(indiceAleatorio, 1);
+        
         const capitalCorrecta = paisCorrecto.Capital;
 
-        // 2. Elegir 3 capitales incorrectas (distintas entre sí y de la correcta)
+        // 2. Elegir 3 capitales incorrectas de la lista COMPLETA (incluyendo el país elegido)
         let opcionesIncorrectas = [];
-        let todasLasCapitales = todosLosPaises.map(p => p.Capital).filter(c => c !== capitalCorrecta);
+        let todasLasCapitales = todosLosPaises.map(p => p.Capital);
         
-        // Barajar y tomar las primeras 3
-        todasLasCapitales.sort(() => 0.5 - Math.random());
-        opcionesIncorrectas = todasLasCapitales.slice(0, 3);
+        // Filtrar la capital correcta y luego barajar y tomar 3
+        let capitalesParaOpciones = todasLasCapitales.filter(c => c !== capitalCorrecta);
+        capitalesParaOpciones.sort(() => 0.5 - Math.random());
+        opcionesIncorrectas = capitalesParaOpciones.slice(0, 3);
 
         // 3. Combinar y barajar las 4 opciones
         let opciones = [...opcionesIncorrectas, capitalCorrecta];
-        opciones.sort(() => 0.5 - Math.random()); // Barajar las opciones
+        opciones.sort(() => 0.5 - Math.random()); 
 
         preguntaActual = {
             pais: paisCorrecto.País,
@@ -157,7 +198,12 @@
     }
 
     function mostrarPregunta() {
-        if (todosLosPaises.length === 0) return;
+        if (rondaActual >= MAX_ROUNDS) {
+            terminarJuego();
+            return;
+        }
+        
+        rondaActual++;
         
         seleccionarPregunta();
         
@@ -166,7 +212,7 @@
         document.getElementById('next-button').style.display = 'none';
         
         const container = document.getElementById('options-container');
-        container.innerHTML = ''; // Limpiar opciones anteriores
+        container.innerHTML = ''; 
 
         preguntaActual.opciones.forEach(capital => {
             const button = document.createElement('button');
@@ -174,13 +220,14 @@
             button.onclick = () => verificarRespuesta(capital, button);
             container.appendChild(button);
         });
+
+        actualizarPuntuacion();
     }
 
     function verificarRespuesta(seleccionada, boton) {
-        totalPreguntas++;
         const todosLosBotones = document.querySelectorAll('#options-container button');
 
-        // Desactivar todos los botones para evitar doble clic
+        // Desactivar todos los botones después de la selección
         todosLosBotones.forEach(btn => btn.disabled = true);
         
         let mensaje = "";
@@ -191,7 +238,7 @@
             mensaje = "¡Correcto! 🎉";
         } else {
             boton.classList.add('incorrect');
-            mensaje = `Incorrecto. La capital de ${preguntaActual.pais} es ${preguntaActual.capital}.`;
+            mensaje = `Incorrecto. La capital es ${preguntaActual.capital}.`;
             
             // Marcar la respuesta correcta
             todosLosBotones.forEach(btn => {
@@ -202,7 +249,14 @@
         }
 
         document.getElementById('feedback').textContent = mensaje;
-        document.getElementById('next-button').style.display = 'block';
+
+        if (rondaActual < MAX_ROUNDS) {
+            document.getElementById('next-button').style.display = 'block';
+        } else {
+             document.getElementById('next-button').textContent = "Ver Resultados";
+             document.getElementById('next-button').style.display = 'block';
+        }
+        
         actualizarPuntuacion();
     }
 
@@ -215,9 +269,15 @@
         mostrarPregunta();
     }
 
+    function terminarJuego() {
+        document.getElementById('game-area').style.display = 'none';
+        document.getElementById('final-score').textContent = puntuacion;
+        document.getElementById('game-over').style.display = 'block';
+    }
+
     function actualizarPuntuacion() {
         document.getElementById('current-score').textContent = puntuacion;
-        document.getElementById('total-questions').textContent = totalPreguntas;
+        document.getElementById('current-question-num').textContent = rondaActual;
     }
 
     // Iniciar la carga de datos al cargar la página
