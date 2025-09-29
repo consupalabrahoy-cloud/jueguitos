@@ -1,0 +1,1154 @@
+[
+    {
+        "País": "Afganistán",
+        "Capital": "Kabul",
+        "Idioma Oficial": "Pastún / Dari",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Albania",
+        "Capital": "Tirana",
+        "Idioma Oficial": "Albanés",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Alemania",
+        "Capital": "Berlín",
+        "Idioma Oficial": "Alemán",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Andorra",
+        "Capital": "Andorra la Vieja",
+        "Idioma Oficial": "Catalán",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Angola",
+        "Capital": "Luanda",
+        "Idioma Oficial": "Portugués",
+        "Continente": "África"
+    },
+    {
+        "País": "Antigua y Barbuda",
+        "Capital": "Saint John's",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Arabia Saudita",
+        "Capital": "Riad",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Argelia",
+        "Capital": "Argel",
+        "Idioma Oficial": "Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "Argentina",
+        "Capital": "Buenos Aires",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Armenia",
+        "Capital": "Ereván",
+        "Idioma Oficial": "Armenio",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Australia",
+        "Capital": "Canberra",
+        "Idioma Oficial": "Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Austria",
+        "Capital": "Viena",
+        "Idioma Oficial": "Alemán",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Azerbaiyán",
+        "Capital": "Bakú",
+        "Idioma Oficial": "Azerí",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Bahamas",
+        "Capital": "Nasáu",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Bangladés",
+        "Capital": "Daca",
+        "Idioma Oficial": "Bengalí",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Barbados",
+        "Capital": "Bridgetown",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Baréin",
+        "Capital": "Manama",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Bélgica",
+        "Capital": "Bruselas",
+        "Idioma Oficial": "Neerlandés / Francés / Alemán",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Belice",
+        "Capital": "Belmopán",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Benín",
+        "Capital": "Porto Novo",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Bielorrusia",
+        "Capital": "Minsk",
+        "Idioma Oficial": "Bielorruso / Ruso",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Bolivia",
+        "Capital": "Sucre (constitucional) / La Paz (gobierno)",
+        "Idioma Oficial": "Español / Quechua / Aimara",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Bosnia y Herzegovina",
+        "Capital": "Sarajevo",
+        "Idioma Oficial": "Bosnio / Croata / Serbio",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Botsuana",
+        "Capital": "Gaborone",
+        "Idioma Oficial": "Inglés / Setsuana",
+        "Continente": "África"
+    },
+    {
+        "País": "Brasil",
+        "Capital": "Brasilia",
+        "Idioma Oficial": "Portugués",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Brunéi",
+        "Capital": "Bandar Seri Begawan",
+        "Idioma Oficial": "Malayo",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Bulgaria",
+        "Capital": "Sofía",
+        "Idioma Oficial": "Búlgaro",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Burkina Faso",
+        "Capital": "Uagadugú",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Burundi",
+        "Capital": "Gitega",
+        "Idioma Oficial": "Kirundi / Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Bután",
+        "Capital": "Timbu",
+        "Idioma Oficial": "Dzongkha",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Cabo Verde",
+        "Capital": "Praia",
+        "Idioma Oficial": "Portugués",
+        "Continente": "África"
+    },
+    {
+        "País": "Camboya",
+        "Capital": "Nom Pen",
+        "Idioma Oficial": "Jemer",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Camerún",
+        "Capital": "Yaundé",
+        "Idioma Oficial": "Francés / Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Canadá",
+        "Capital": "Ottawa",
+        "Idioma Oficial": "Inglés / Francés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Catar",
+        "Capital": "Doha",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Chad",
+        "Capital": "Yamena",
+        "Idioma Oficial": "Francés / Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "Chile",
+        "Capital": "Santiago",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "China",
+        "Capital": "Pekín",
+        "Idioma Oficial": "Mandarín",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Chipre",
+        "Capital": "Nicosia",
+        "Idioma Oficial": "Griego / Turco",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Ciudad del Vaticano",
+        "Capital": "Ciudad del Vaticano",
+        "Idioma Oficial": "Latín / Italiano",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Colombia",
+        "Capital": "Bogotá",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Comoras",
+        "Capital": "Moroni",
+        "Idioma Oficial": "Comorense / Francés / Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "Corea del Norte",
+        "Capital": "Pionyang",
+        "Idioma Oficial": "Coreano",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Corea del Sur",
+        "Capital": "Seúl",
+        "Idioma Oficial": "Coreano",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Costa de Marfil",
+        "Capital": "Yamusukro",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Costa Rica",
+        "Capital": "San José",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Croacia",
+        "Capital": "Zagreb",
+        "Idioma Oficial": "Croata",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Cuba",
+        "Capital": "La Habana",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Dinamarca",
+        "Capital": "Copenhague",
+        "Idioma Oficial": "Danés",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Dominica",
+        "Capital": "Roseau",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Ecuador",
+        "Capital": "Quito",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Egipto",
+        "Capital": "El Cairo",
+        "Idioma Oficial": "Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "El Salvador",
+        "Capital": "San Salvador",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Emiratos Árabes Unidos",
+        "Capital": "Abu Dabi",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Eritrea",
+        "Capital": "Asmara",
+        "Idioma Oficial": "Tigriña / Árabe / Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Eslovaquia",
+        "Capital": "Bratislava",
+        "Idioma Oficial": "Eslovaco",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Eslovenia",
+        "Capital": "Liubliana",
+        "Idioma Oficial": "Esloveno",
+        "Continente": "Europa"
+    },
+    {
+        "País": "España",
+        "Capital": "Madrid",
+        "Idioma Oficial": "Español",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Estados Unidos",
+        "Capital": "Washington D. C.",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Estonia",
+        "Capital": "Tallin",
+        "Idioma Oficial": "Estonio",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Etiopía",
+        "Capital": "Adís Abeba",
+        "Idioma Oficial": "Amhárico",
+        "Continente": "África"
+    },
+    {
+        "País": "Filipinas",
+        "Capital": "Manila",
+        "Idioma Oficial": "Filipino / Inglés",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Finlandia",
+        "Capital": "Helsinki",
+        "Idioma Oficial": "Finlandés / Sueco",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Fiyi",
+        "Capital": "Suva",
+        "Idioma Oficial": "Inglés / Fiyiano / Hindi",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Francia",
+        "Capital": "París",
+        "Idioma Oficial": "Francés",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Gabón",
+        "Capital": "Libreville",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Gambia",
+        "Capital": "Banjul",
+        "Idioma Oficial": "Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Georgia",
+        "Capital": "Tiflis",
+        "Idioma Oficial": "Georgiano",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Ghana",
+        "Capital": "Acra",
+        "Idioma Oficial": "Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Granada",
+        "Capital": "Saint George's",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Grecia",
+        "Capital": "Atenas",
+        "Idioma Oficial": "Griego",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Guatemala",
+        "Capital": "Ciudad de Guatemala",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Guinea",
+        "Capital": "Conakri",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Guinea-Bisáu",
+        "Capital": "Bisáu",
+        "Idioma Oficial": "Portugués",
+        "Continente": "África"
+    },
+    {
+        "País": "Guinea Ecuatorial",
+        "Capital": "Malabo",
+        "Idioma Oficial": "Español / Francés / Portugués",
+        "Continente": "África"
+    },
+    {
+        "País": "Guyana",
+        "Capital": "Georgetown",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Haití",
+        "Capital": "Puerto Príncipe",
+        "Idioma Oficial": "Haitiano / Francés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Honduras",
+        "Capital": "Tegucigalpa",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Hungría",
+        "Capital": "Budapest",
+        "Idioma Oficial": "Húngaro",
+        "Continente": "Europa"
+    },
+    {
+        "País": "India",
+        "Capital": "Nueva Delhi",
+        "Idioma Oficial": "Hindi / Inglés",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Indonesia",
+        "Capital": "Yakarta",
+        "Idioma Oficial": "Indonesio",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Irak",
+        "Capital": "Bagdad",
+        "Idioma Oficial": "Árabe / Kurdo",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Irán",
+        "Capital": "Teherán",
+        "Idioma Oficial": "Persa (Farsi)",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Irlanda",
+        "Capital": "Dublín",
+        "Idioma Oficial": "Irlandés / Inglés",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Islandia",
+        "Capital": "Reikiavik",
+        "Idioma Oficial": "Islandés",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Islas Marshall",
+        "Capital": "Majuro",
+        "Idioma Oficial": "Marshalés / Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Islas Salomón",
+        "Capital": "Honiara",
+        "Idioma Oficial": "Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Israel",
+        "Capital": "Jerusalén",
+        "Idioma Oficial": "Hebreo / Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Italia",
+        "Capital": "Roma",
+        "Idioma Oficial": "Italiano",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Jamaica",
+        "Capital": "Kingston",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Japón",
+        "Capital": "Tokio",
+        "Idioma Oficial": "Japonés",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Jordania",
+        "Capital": "Amán",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Kazajistán",
+        "Capital": "Astaná",
+        "Idioma Oficial": "Kazajo / Ruso",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Kenia",
+        "Capital": "Nairobi",
+        "Idioma Oficial": "Suajili / Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Kirguistán",
+        "Capital": "Biskek",
+        "Idioma Oficial": "Kirguís / Ruso",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Kiribati",
+        "Capital": "Tarawa",
+        "Idioma Oficial": "Kiribatiano / Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Kuwait",
+        "Capital": "Ciudad de Kuwait",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Laos",
+        "Capital": "Vientián",
+        "Idioma Oficial": "Lao",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Lesoto",
+        "Capital": "Maseru",
+        "Idioma Oficial": "Sesoto / Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Letonia",
+        "Capital": "Riga",
+        "Idioma Oficial": "Letón",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Líbano",
+        "Capital": "Beirut",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Liberia",
+        "Capital": "Monrovia",
+        "Idioma Oficial": "Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Libia",
+        "Capital": "Trípoli",
+        "Idioma Oficial": "Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "Liechtenstein",
+        "Capital": "Vaduz",
+        "Idioma Oficial": "Alemán",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Lituania",
+        "Capital": "Vilna",
+        "Idioma Oficial": "Lituano",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Luxemburgo",
+        "Capital": "Luxemburgo",
+        "Idioma Oficial": "Luxemburgués / Francés / Alemán",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Macedonia del Norte",
+        "Capital": "Skopie",
+        "Idioma Oficial": "Macedonio",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Madagascar",
+        "Capital": "Antananarivo",
+        "Idioma Oficial": "Malgache / Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Malasia",
+        "Capital": "Kuala Lumpur",
+        "Idioma Oficial": "Malayo",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Malaui",
+        "Capital": "Lilongüe",
+        "Idioma Oficial": "Chichewa / Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Maldivas",
+        "Capital": "Malé",
+        "Idioma Oficial": "Divehi",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Malí",
+        "Capital": "Bamako",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Malta",
+        "Capital": "La Valeta",
+        "Idioma Oficial": "Maltés / Inglés",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Marruecos",
+        "Capital": "Rabat",
+        "Idioma Oficial": "Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "Mauricio",
+        "Capital": "Port Louis",
+        "Idioma Oficial": "Ninguno (Inglés y Francés comunes)",
+        "Continente": "África"
+    },
+    {
+        "País": "Mauritania",
+        "Capital": "Nuakchot",
+        "Idioma Oficial": "Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "México",
+        "Capital": "Ciudad de México",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Micronesia",
+        "Capital": "Palikir",
+        "Idioma Oficial": "Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Moldavia",
+        "Capital": "Chisináu",
+        "Idioma Oficial": "Rumano",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Mónaco",
+        "Capital": "Mónaco",
+        "Idioma Oficial": "Francés",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Mongolia",
+        "Capital": "Ulán Bator",
+        "Idioma Oficial": "Mongol",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Montenegro",
+        "Capital": "Podgorica",
+        "Idioma Oficial": "Montenegrino",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Mozambique",
+        "Capital": "Maputo",
+        "Idioma Oficial": "Portugués",
+        "Continente": "África"
+    },
+    {
+        "País": "Namibia",
+        "Capital": "Windhoek",
+        "Idioma Oficial": "Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Nauru",
+        "Capital": "Yaren",
+        "Idioma Oficial": "Nauruano / Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Nepal",
+        "Capital": "Katmandú",
+        "Idioma Oficial": "Nepalí",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Nicaragua",
+        "Capital": "Managua",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Níger",
+        "Capital": "Niamey",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Nigeria",
+        "Capital": "Abuya",
+        "Idioma Oficial": "Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Noruega",
+        "Capital": "Oslo",
+        "Idioma Oficial": "Noruego",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Nueva Zelanda",
+        "Capital": "Wellington",
+        "Idioma Oficial": "Inglés / Maorí",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Omán",
+        "Capital": "Mascate",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Países Bajos",
+        "Capital": "Ámsterdam",
+        "Idioma Oficial": "Neerlandés",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Pakistán",
+        "Capital": "Islamabad",
+        "Idioma Oficial": "Urdú / Inglés",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Palaos",
+        "Capital": "Ngerulmud",
+        "Idioma Oficial": "Inglés / Palauano",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Panamá",
+        "Capital": "Ciudad de Panamá",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Papúa Nueva Guinea",
+        "Capital": "Port Moresby",
+        "Idioma Oficial": "Tok Pisin / Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Paraguay",
+        "Capital": "Asunción",
+        "Idioma Oficial": "Español / Guaraní",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Perú",
+        "Capital": "Lima",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Polonia",
+        "Capital": "Varsovia",
+        "Idioma Oficial": "Polaco",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Portugal",
+        "Capital": "Lisboa",
+        "Idioma Oficial": "Portugués",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Reino Unido",
+        "Capital": "Londres",
+        "Idioma Oficial": "Inglés",
+        "Continente": "Europa"
+    },
+    {
+        "País": "República Centroafricana",
+        "Capital": "Bangui",
+        "Idioma Oficial": "Francés / Sango",
+        "Continente": "África"
+    },
+    {
+        "País": "República Checa",
+        "Capital": "Praga",
+        "Idioma Oficial": "Checo",
+        "Continente": "Europa"
+    },
+    {
+        "País": "República del Congo",
+        "Capital": "Brazzaville",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "República Democrática del Congo",
+        "Capital": "Kinsasa",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "República Dominicana",
+        "Capital": "Santo Domingo",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Ruanda",
+        "Capital": "Kigali",
+        "Idioma Oficial": "Ruandés / Francés / Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Rumanía",
+        "Capital": "Bucarest",
+        "Idioma Oficial": "Rumano",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Rusia",
+        "Capital": "Moscú",
+        "Idioma Oficial": "Ruso",
+        "Continente": "Europa / Asia"
+    },
+    {
+        "País": "Samoa",
+        "Capital": "Apia",
+        "Idioma Oficial": "Samoano / Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "San Cristóbal y Nieves",
+        "Capital": "Basseterre",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "San Marino",
+        "Capital": "San Marino",
+        "Idioma Oficial": "Italiano",
+        "Continente": "Europa"
+    },
+    {
+        "País": "San Vicente y las Granadinas",
+        "Capital": "Kingstown",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Santa Lucía",
+        "Capital": "Castries",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Santo Tomé y Príncipe",
+        "Capital": "Santo Tomé",
+        "Idioma Oficial": "Portugués",
+        "Continente": "África"
+    },
+    {
+        "País": "Senegal",
+        "Capital": "Dakar",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Serbia",
+        "Capital": "Belgrado",
+        "Idioma Oficial": "Serbio",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Seychelles",
+        "Capital": "Victoria",
+        "Idioma Oficial": "Criollo seychelense / Inglés / Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Sierra Leona",
+        "Capital": "Freetown",
+        "Idioma Oficial": "Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Singapur",
+        "Capital": "Singapur",
+        "Idioma Oficial": "Inglés / Malayo / Mandarín / Tamil",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Siria",
+        "Capital": "Damasco",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Somalia",
+        "Capital": "Mogadiscio",
+        "Idioma Oficial": "Somalí / Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "Sri Lanka",
+        "Capital": "Sri Jayawardenapura Kotte",
+        "Idioma Oficial": "Cingalés / Tamil",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Sudáfrica",
+        "Capital": "Pretoria (Ejecutiva)",
+        "Idioma Oficial": "11 idiomas oficiales",
+        "Continente": "África"
+    },
+    {
+        "País": "Sudán",
+        "Capital": "Jartum",
+        "Idioma Oficial": "Árabe / Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Sudán del Sur",
+        "Capital": "Yuba",
+        "Idioma Oficial": "Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Suecia",
+        "Capital": "Estocolmo",
+        "Idioma Oficial": "Sueco",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Suiza",
+        "Capital": "Berna",
+        "Idioma Oficial": "Alemán / Francés / Italiano",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Surinam",
+        "Capital": "Paramaribo",
+        "Idioma Oficial": "Neerlandés",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Tailandia",
+        "Capital": "Bangkok",
+        "Idioma Oficial": "Tailandés",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Tanzania",
+        "Capital": "Dodoma",
+        "Idioma Oficial": "Suajili / Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Tayikistán",
+        "Capital": "Dusambé",
+        "Idioma Oficial": "Tayiko",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Timor Oriental",
+        "Capital": "Dili",
+        "Idioma Oficial": "Portugués / Tetun",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Togo",
+        "Capital": "Lomé",
+        "Idioma Oficial": "Francés",
+        "Continente": "África"
+    },
+    {
+        "País": "Tonga",
+        "Capital": "Nukualofa",
+        "Idioma Oficial": "Tongano / Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Trinidad y Tobago",
+        "Capital": "Puerto España",
+        "Idioma Oficial": "Inglés",
+        "Continente": "América del Norte"
+    },
+    {
+        "País": "Túnez",
+        "Capital": "Túnez",
+        "Idioma Oficial": "Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "Turkmenistán",
+        "Capital": "Asjabad",
+        "Idioma Oficial": "Turcomano",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Turquía",
+        "Capital": "Ankara",
+        "Idioma Oficial": "Turco",
+        "Continente": "Europa / Asia"
+    },
+    {
+        "País": "Tuvalu",
+        "Capital": "Funafuti",
+        "Idioma Oficial": "Tuvaluano / Inglés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Ucrania",
+        "Capital": "Kiev",
+        "Idioma Oficial": "Ucraniano",
+        "Continente": "Europa"
+    },
+    {
+        "País": "Uganda",
+        "Capital": "Kampala",
+        "Idioma Oficial": "Inglés / Suajili",
+        "Continente": "África"
+    },
+    {
+        "País": "Uruguay",
+        "Capital": "Montevideo",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Uzbekistán",
+        "Capital": "Taskent",
+        "Idioma Oficial": "Uzbeko",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Vanuatu",
+        "Capital": "Port Vila",
+        "Idioma Oficial": "Bislama / Inglés / Francés",
+        "Continente": "Oceanía"
+    },
+    {
+        "País": "Venezuela",
+        "Capital": "Caracas",
+        "Idioma Oficial": "Español",
+        "Continente": "América del Sur"
+    },
+    {
+        "País": "Vietnam",
+        "Capital": "Hanói",
+        "Idioma Oficial": "Vietnamita",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Yemen",
+        "Capital": "Saná",
+        "Idioma Oficial": "Árabe",
+        "Continente": "Asia"
+    },
+    {
+        "País": "Yibuti",
+        "Capital": "Yibuti",
+        "Idioma Oficial": "Francés / Árabe",
+        "Continente": "África"
+    },
+    {
+        "País": "Zambia",
+        "Capital": "Lusaka",
+        "Idioma Oficial": "Inglés",
+        "Continente": "África"
+    },
+    {
+        "País": "Zimbabue",
+        "Capital": "Harare",
+        "Idioma Oficial": "16 idiomas oficiales (incluido Inglés)",
+        "Continente": "África"
+    }
+]
